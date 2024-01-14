@@ -1,10 +1,11 @@
-import Authcontainer from "../features/authentication/Authcontainer";
+import React from "react";
+import AuthContainer from "../features/authentication/AuthContainer";
 
 function Auth() {
   return (
     <div className="container xl:max-w-screen-xl">
       <div className="flex justify-center pt-10 ">
-        <Authcontainer />
+        <AuthContainer />
       </div>
     </div>
   );

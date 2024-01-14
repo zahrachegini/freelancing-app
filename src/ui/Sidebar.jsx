@@ -1,5 +1,6 @@
-import { HiCollection, HiHome } from "react-icons/hi";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import { HiCollection, HiHome } from "react-icons/hi";
 
 function Sidebar() {
   return (

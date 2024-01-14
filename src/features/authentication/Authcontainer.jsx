@@ -1,11 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../services/authService";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
-function Authcontainer() {
+function AuthContainer() {
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  const [step, setStep] = useState(1);
+  const { register, handleSubmit, getValues } = useForm();
+
   const {
     isPending: isSendingOtp,
     mutateAsync,
@@ -14,19 +19,15 @@ function Authcontainer() {
     mutationFn: getOtp,
   });
 
-  const sendOtoHandler = async (e) => {
-    e.preventDefault();
+  const sendOtpHandler = async (data) => {
     try {
-      const data = await mutateAsync({ phoneNumber });
+      const { message } = await mutateAsync(data);
       setStep(2);
-      toast.success(data.message);
+      toast.success(message);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
   };
-
-  const [step, setStep] = useState(1);
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   const renderStep = () => {
     switch (step) {
@@ -34,18 +35,19 @@ function Authcontainer() {
         return (
           <SendOTPForm
             isSendingOtp={isSendingOtp}
-            onSubmit={sendOtoHandler}
+            onSubmit={handleSubmit(sendOtpHandler)}
             setStep={setStep}
-            phoneNumber={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            register={register}
+            // phoneNumber={phoneNumber}
+            // onChange={(e) => setPhoneNumber(e.target.value)}
           />
         );
       case 2:
         return (
           <CheckOTPForm
-            phoneNumber={phoneNumber}
+            onResendOtp={sendOtpHandler}
+            phoneNumber={getValues("phoneNumber")}
             onBack={() => setStep((s) => s - 1)}
-            onReSendOtp={sendOtoHandler}
             otpResponse={otpResponse}
           />
         );
@@ -56,4 +58,4 @@ function Authcontainer() {
   return <div className="w-full sm:max-w-sm">{renderStep()}</div>;
 }
 
-export default Authcontainer;
+export default AuthContainer;

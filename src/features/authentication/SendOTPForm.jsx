@@ -1,21 +1,25 @@
+import React from "react";
 import TextField from "../../ui/TextField";
-import Loading from "../../ui/Loading";
+import Loader from "../../ui/Loader";
 
-function SendOTPForm({ isSendingOtp, phoneNumber, onChange, onSubmit }) {
+export default function SendOTPForm({
+  onSubmit,
+  isPending: isSendingOtp,
+  register,
+}) {
   return (
-    <div>
-      <form action="" className="space-y-8" onSubmit={onSubmit}>
+    <div className="">
+      <form action="" className="space-y-4" onSubmit={onSubmit}>
         <TextField
           label="شماره موبایل"
-          name={phoneNumber}
-          value={phoneNumber}
-          onChange={onChange}
+          name="phoneNumber"
+          register={register}
         />
         <div className="">
           {isSendingOtp ? (
-            <Loading />
+            <Loader />
           ) : (
-            <button type="submit" className="btn btn--primary w-full">
+            <button className="btn btn--primary w-full" type="submit">
               ارسال کد تائید
             </button>
           )}
@@ -24,5 +28,3 @@ function SendOTPForm({ isSendingOtp, phoneNumber, onChange, onSubmit }) {
     </div>
   );
 }
-
-export default SendOTPForm;
