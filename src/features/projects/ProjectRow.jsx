@@ -8,6 +8,7 @@ import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
+import CreateProjectForm from "./CreateProjectForm";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -16,7 +17,7 @@ function ProjectRow({ project, index }) {
   return (
     <Table.Row>
       <td>{index + 1}</td>
-      <td>{truncateText(project.title, 20)}</td>
+      <td>{truncateText(project.title, 30)}</td>
       <td>{project.category.title}</td>
       <td>{toPersianNumbersWithComma(project.budget)}</td>
       <td>{toLocalDateStringshort(project.deadline)}</td>
@@ -48,7 +49,10 @@ function ProjectRow({ project, index }) {
               title={`ویرایش ${project.title}`}
               open={isEditOpen}
             >
-              modal
+              <CreateProjectForm
+                projectToEdit={project}
+                onClose={() => setIsEditOpen(false)}
+              />
             </Modal>
           </>
           <>
