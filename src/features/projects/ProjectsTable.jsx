@@ -23,7 +23,8 @@ function ProjectsTable() {
           <th>تگ ها</th>
           <th>فریلنسر</th>
           <th>وضعیت</th>
-          <th>...</th>
+          <th>عملیات</th>
+          <th>درخواست ها</th>
         </Table.Header>
         <Table.Body>
           {projects.map((project, index) => (

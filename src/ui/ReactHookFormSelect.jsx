@@ -1,5 +1,3 @@
-import React from "react";
-
 function ReactHookFormSelect({ label, name, register, options, required }) {
   return (
     <div>
