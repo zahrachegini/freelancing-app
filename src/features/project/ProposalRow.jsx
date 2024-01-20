@@ -20,12 +20,12 @@ const statusStyle = [
 ];
 
 function ProposalRow({ proposal, index }) {
-  const { status, user } = proposal;
+  const { user, status } = proposal;
   const [open, setOpen] = useState(false);
   return (
     <Table.Row>
       <td>{index + 1}</td>
-      <td>{proposal.user.name}</td>
+      <td>{user.name}</td>
       <td>
         <p>{truncateText(proposal.description, 50)}</p>
       </td>
@@ -45,7 +45,7 @@ function ProposalRow({ proposal, index }) {
           onClose={() => setOpen(false)}
         >
           <ChangeProposalStatus
-            proposalId={proposal.id}
+            proposalId={proposal._id}
             onClose={() => setOpen(false)}
           />
         </Modal>

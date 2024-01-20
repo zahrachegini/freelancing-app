@@ -3,7 +3,7 @@ import CreateProjectForm from "./CreateProjectForm";
 import { HiOutlinePlus } from "react-icons/hi";
 import Modal from "../../ui/Modal";
 
-function ProjectHeader() {
+function ProjectsHeader() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex items-center justify-between mb-6">
@@ -26,4 +26,4 @@ function ProjectHeader() {
   );
 }
 
-export default ProjectHeader;
+export default ProjectsHeader;

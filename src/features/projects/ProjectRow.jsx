@@ -32,7 +32,7 @@ function ProjectRow({ project, index }) {
           ))}
         </div>
       </td>
-      <td>{project.freelancing?.name || "-"}</td>
+      <td>{project?.freelancer?.name || "-"}</td>
       <td>
         <ToggleProjectStatus project={project} />
       </td>

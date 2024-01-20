@@ -23,6 +23,7 @@ const options = [
 
 function ChangeProposalStatus({ proposalId, onClose }) {
   const { id: projectId } = useParams();
+  console.log(projectId);
   const { register, handleSubmit } = useForm();
   const { isUpdating, changeProposalStatus } = useChangeProposalStatus();
   const queryClient = useQueryClient();
@@ -41,7 +42,7 @@ function ChangeProposalStatus({ proposalId, onClose }) {
   };
   return (
     <div>
-      <form action="" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <ReactHookFormSelect
           name="status"
           label="تغییر وضعیت درخواست"

@@ -19,5 +19,5 @@ export function getUser() {
 }
 
 export function logoutApi() {
-  return http.post("/user/logout");
+  return http.post("/user/logout").then(({ data }) => data.data);
 }

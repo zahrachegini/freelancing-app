@@ -1,12 +1,11 @@
 import React from "react";
-
-import ProjectHeader from "../features/projects/ProjectHeader";
 import ProjectsTable from "./../features/projects/ProjectsTable";
+import ProjectsHeader from "../features/projects/ProjectsHeader";
 
 function Projects() {
   return (
     <div>
-      <ProjectHeader />
+      <ProjectsHeader />
       <ProjectsTable />
     </div>
   );
