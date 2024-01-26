@@ -9,7 +9,7 @@ function ProjectsTable() {
   const { isLoading, projects } = useOwnerProjects();
 
   if (isLoading) return <Loader />;
-  if (!projects.length) return <Empty resourceName="پروژه ای یافت نشد" />;
+  if (!projects) return <Empty resourceName="پروژه ای یافت نشد" />;
 
   return (
     <div className="bg-secondary-0 overflow-x-auto">
